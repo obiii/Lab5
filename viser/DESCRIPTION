@@ -11,5 +11,5 @@ Encoding: UTF-8
 Depends: R (>= 2.10)
 LazyData: true
 Imports:
-    jsonlite,RCurl
+    jsonlite,RCurl,reshape
 RoxygenNote: 6.1.0

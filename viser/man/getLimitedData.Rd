@@ -7,7 +7,8 @@
 getLimitedData(limit = 5000)
 }
 \arguments{
-\item{limit}{to limit the records}
+\item{limit}{tos
+limit the records}
 }
 \description{
 Get data limted by number of observations
