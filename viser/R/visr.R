@@ -5,6 +5,7 @@ baseUrl =  paste0("https://data.montgomerycountymd.gov/resource/yc8a-5df8.json?"
 '%ni%' <- Negate('%in%')
 
 #' Function to clean the data
+#' @param jsondf as input dataframe
 cleanData <- function(jsondf){
   
   df <- as.data.frame(jsondf)
@@ -19,11 +20,11 @@ cleanData <- function(jsondf){
 }
 
 #' Get data limted by number of observations
+#' @param limit to limit the records
 #' @export
 getLimitedData <- function(limit = 5000){
 
-  require(RCurl)
-  require(jsonlite)
+ 
   
   newUrl = paste0(baseUrl,"$limit=",limit)
   data <- fromJSON(url)

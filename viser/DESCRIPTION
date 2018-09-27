@@ -6,7 +6,7 @@ Date: 2018-09-20
 Author: Obaid Ur Rehman(obaur539), Muhammad Habib(muhha866)
 Maintainer: Who to complain to <obaur539@liu.se>
 Description: Package provides API to get data and statistis for crime.
-License: Apache
+License: None
 Encoding: UTF-8
 Depends: R (>= 2.10)
 LazyData: true

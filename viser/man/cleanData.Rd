@@ -6,6 +6,9 @@
 \usage{
 cleanData(jsondf)
 }
+\arguments{
+\item{jsondf}{as input dataframe}
+}
 \description{
 Function to clean the data
 }
