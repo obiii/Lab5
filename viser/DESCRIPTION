@@ -13,5 +13,3 @@ LazyData: true
 Imports:
     jsonlite,RCurl
 RoxygenNote: 6.1.0
-Suggests: testthat
-VignetteBuilder: knitr
