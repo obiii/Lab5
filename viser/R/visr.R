@@ -58,9 +58,4 @@ getDataByCrimeType <- function(dataset,crimeType){
 
 
 
-library(jsonlite)
-library(tidyr)
 
-x <- getLimitedData(limit=5000)
-
-a <- getDataByCrimeType(x,0)
