@@ -4,7 +4,7 @@
 \name{allCrime}
 \alias{allCrime}
 \title{CrimeTypes}
-\format{An object of class \code{character} of length 57.}
+\format{An object of class \code{character} of length 55.}
 \usage{
 allCrime
 }

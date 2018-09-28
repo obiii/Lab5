@@ -10,8 +10,8 @@ dataset <- NULL
 
 #' CrimeTypes
 #' @export
-allCrime <- c("JUVENILE", "DAMAGE", "SUDDEN", "LARCENY", "BURGLARY", "SEX", "MISSING", "DRIVING", "DRUGS", "LIQUOR", "MENTAL", "LOST", "FORGERY", "RECOVERED", "PUBLIC", "ASSAULT", "ROBBERY", "TRESPASSING", "FAMILY", "POLICE", "AUTO", "LITTERING", "OBSTRUCT", "SUICIDE", "FRAUD", "IDENTITY", "RAPE", "ATTEMPTED", "OVERDOSE", "WEAPON", "FUGITIVE", "ALL", "ABDUCT", "ESCAPE", "EXTORT", "COUNTERFEITING", "TRAFFIC", "SOLICITATION", "STOLEN", "COMM", "UNAUTHORIZED", "EXTORTION", "ARSON", "KIDNAP", "LOITERING", "FALSE", 
-              "HUMAN", "FIRE", "CARRYING", "THREAT", "PROPERTY", "EMBEZZLE", "ANIMAL", "INCOME", "HIT", "OBSCENE", "DRUNKENNESS")
+allCrime <- c("JUVENILE", "DAMAGE", "SUDDEN", "LARCENY", "BURGLARY", "SEX", "MISSING", "DRIVING", "DRUGS", "LIQUOR", "MENTAL", "LOST", "FORGERY", "RECOVERED", "PUBLIC", "ASSAULT", "ROBBERY", "TRESPASSING", "FAMILY", "POLICE", "AUTO", "LITTERING", "OBSTRUCT", "SUICIDE", "FRAUD", "IDENTITY", "RAPE", "ATTEMPTED", "OVERDOSE", "WEAPON", "FUGITIVE", "ABDUCT", "ESCAPE", "EXTORT", "COUNTERFEITING", "TRAFFIC", "SOLICITATION", "STOLEN", "COMM", "UNAUTHORIZED", "EXTORTION", "ARSON", "KIDNAP", "LOITERING", "FALSE", 
+              "HUMAN", "FIRE", "CARRYING", "THREAT", "PROPERTY", "EMBEZZLE", "INCOME", "HIT", "OBSCENE", "DRUNKENNESS")
 
 #' Function to clean the data
 #' @param jsondf as input dataframe
@@ -24,6 +24,9 @@ cleanData <- function(jsondf){
   df$time = format(as.POSIXct(strptime(df$date,"%Y-%m-%dT%H:%M:%S",tz="")) ,format = "%H:%M")
   df$date = format(as.POSIXct(strptime(df$date,"%Y-%m-%dT%H:%M:%S",tz="")) ,format = "%Y-%m-%d")
   df <- df %>% separate(crimename3, c("crimeType", "Crime"))
+  
+  df$latitude <- as.numeric(df$Latitude)
+  df$longitude <- as.numeric(df$longitude)
   return(df)
 }
 
@@ -32,30 +35,32 @@ cleanData <- function(jsondf){
 #' limit the records
 #' @export
 getLimitedData <- function(limit = 5000){
-
- 
   
   newUrl = paste0(baseUrl,"$limit=",limit)
   data <- fromJSON(newUrl)
   
   data <- cleanData(data)
   
-  dataset <- data
+  data <- data[,c("crimeType","latitude","longitude")]
+  return(data)
 }
 
 
 #' Function to get data by crime type
 #' @param crimeType a crime type
 #' @export
-getDataByCrimeType <- function(crimeType){
+getDataByCrimeType <- function(dataset,crimeType){
   
-  if(crimeType == "All"){
-    return(dataset[allCrime])
-  }else{
-    dataset <- dataset[,crimeType]
-    return(dataset)
-  }
+  crimetype = allCrime[crimeType]
+  return(dataset[dataset$crimeType==crimetype, c("crimeType","latitude","longitude") ])
+
 }
 
-#x<-getLimitedData(limit=5000)
 
+
+library(jsonlite)
+library(tidyr)
+
+x <- getLimitedData(limit=5000)
+
+a <- getDataByCrimeType(x,0)

@@ -4,7 +4,7 @@
 \alias{getDataByCrimeType}
 \title{Function to get data by crime type}
 \usage{
-getDataByCrimeType(crimeType)
+getDataByCrimeType(dataset, crimeType)
 }
 \arguments{
 \item{crimeType}{a crime type}
