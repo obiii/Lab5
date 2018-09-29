@@ -41,7 +41,7 @@ getLimitedData <- function(limit = 5000){
   
   data <- cleanData(data)
   
-  data <- data[,c("crimeType","latitude","longitude")]
+  data <- data[,c("crimeType","latitude","longitude","date")]
   return(data)
 }
 
@@ -52,7 +52,7 @@ getLimitedData <- function(limit = 5000){
 getDataByCrimeType <- function(dataset,crimeType){
   
   crimetype = allCrime[crimeType]
-  return(dataset[dataset$crimeType==crimetype, c("crimeType","latitude","longitude") ])
+  return(dataset[dataset$crimeType==crimetype, c("crimeType","latitude","longitude","date") ])
 
 }
 
