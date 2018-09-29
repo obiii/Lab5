@@ -59,4 +59,11 @@ getDataByCrimeType <- function(dataset,crimeType){
 
 
 
+#' Function to mao crime name with Id
+#' @param id crime ID associated with crime
+#' @export
+getCrimeByID <- function(id){
+  return(allCrime[id])
+}
+
 
