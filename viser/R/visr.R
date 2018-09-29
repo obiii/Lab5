@@ -42,6 +42,7 @@ getLimitedData <- function(limit = 5000){
   data <- cleanData(data)
   
   data <- data[,c("crimeType","latitude","longitude","date")]
+  data <- data[!is.na(data$date),]
   return(data)
 }
 
