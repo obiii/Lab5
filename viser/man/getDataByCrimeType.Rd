@@ -7,7 +7,12 @@
 getDataByCrimeType(dataset, crimeType)
 }
 \arguments{
+\item{dataset}{a dataset}
+
 \item{crimeType}{a crime type}
+}
+\value{
+dataset for a specific crime given by \code{crimeType}
 }
 \description{
 Function to get data by crime type

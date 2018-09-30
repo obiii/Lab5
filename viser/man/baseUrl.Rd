@@ -8,6 +8,9 @@
 \usage{
 baseUrl
 }
+\arguments{
+\item{baseUrl}{contains the base URL for API call}
+}
 \description{
 Base Url to get crime data
 }

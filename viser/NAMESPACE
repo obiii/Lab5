@@ -2,7 +2,6 @@
 
 export(allCrime)
 export(baseUrl)
-export(dataset)
 export(getCrimeByID)
 export(getDataByCrimeType)
 export(getLimitedData)

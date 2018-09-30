@@ -2,7 +2,7 @@
 % Please edit documentation in R/visr.R
 \name{getCrimeByID}
 \alias{getCrimeByID}
-\title{Function to mao crime name with Id}
+\title{Function to map crime name with Id}
 \usage{
 getCrimeByID(id)
 }
@@ -10,5 +10,9 @@ getCrimeByID(id)
 \item{id}{crime ID associated with crime}
 }
 \description{
-Function to mao crime name with Id
+Function to map crime name with Id
+}
+\examples{
+getCrimeByID(2)
+ 
 }

@@ -7,9 +7,16 @@
 getLimitedData(limit = 5000)
 }
 \arguments{
-\item{limit}{tos
+\item{limit}{to limit records
 limit the records}
+}
+\value{
+dataset containing limited rows with limit as \code{limit}
 }
 \description{
 Get data limted by number of observations
+}
+\examples{
+getLimitedData(limit = 5000)
+
 }

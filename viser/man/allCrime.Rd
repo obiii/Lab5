@@ -8,6 +8,9 @@
 \usage{
 allCrime
 }
+\arguments{
+\item{allCrime}{contains crime categories}
+}
 \description{
 CrimeTypes
 }
