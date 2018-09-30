@@ -16,7 +16,7 @@ allCrime <- c("All","JUVENILE", "DAMAGE", "SUDDEN", "LARCENY", "BURGLARY", "SEX"
 #' Function to clean the data
 #' @param jsondf as input dataframe
 cleanData <- function(jsondf){
-  
+  require(tidyr)
   df <- as.data.frame(jsondf)
   garbCols <- c(colnames(df)[1:4],"geolocation.type","geolocation.coordinates","incident_id","nibrs_code","police_district_number","pra","sector","start_date","state","zip_code","end_date")
   df <- df[,colnames(df)%ni%garbCols]
@@ -35,13 +35,13 @@ cleanData <- function(jsondf){
 #' limit the records
 #' @export
 getLimitedData <- function(limit = 5000){
-  
+  require(jsonlite)
   newUrl = paste0(baseUrl,"$limit=",limit)
   data <- fromJSON(newUrl)
   
   data <- cleanData(data)
   
-  data <- data[,c("crimeType","latitude","longitude","date")]
+  data <- data[,c("crimeType","latitude","longitude","date","victims")]
   data <- data[!is.na(data$date),]
   return(data)
 }
@@ -53,7 +53,7 @@ getLimitedData <- function(limit = 5000){
 getDataByCrimeType <- function(dataset,crimeType){
   
   crimetype = allCrime[crimeType]
-  return(dataset[dataset$crimeType==crimetype, c("crimeType","latitude","longitude","date") ])
+  return(dataset[dataset$crimeType==crimetype, c("crimeType","latitude","longitude","date","victims") ])
 
 }
 
@@ -66,4 +66,6 @@ getCrimeByID <- function(id){
   return(allCrime[id])
 }
 
+
+x <-getLimitedData(limit = 50)
 
