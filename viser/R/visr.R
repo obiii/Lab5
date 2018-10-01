@@ -14,16 +14,16 @@ allCrime <- c("All","JUVENILE", "DAMAGE", "SUDDEN", "LARCENY", "BURGLARY", "SEX"
 
 #' Function to clean the data
 #' @param jsondf as input dataframe
+#' @importFrom tidyr separate
+#' @importFrom dplyr %>%
 cleanData <- function(jsondf){
-  require(tidyr)
-  require(dplyr)
   df <- as.data.frame(jsondf)
   garbCols <- c(colnames(df)[1:4],"geolocation.type","geolocation.coordinates","incident_id","nibrs_code","police_district_number","pra","sector","start_date","state","zip_code","end_date")
   df <- df[,colnames(df)%ni%garbCols]
   
   df$time = format(as.POSIXct(strptime(df$date,"%Y-%m-%dT%H:%M:%S",tz="")) ,format = "%H:%M")
   df$date = format(as.POSIXct(strptime(df$date,"%Y-%m-%dT%H:%M:%S",tz="")) ,format = "%Y-%m-%d")
-  df <- separate(df,crimename3, c("crimeType", "Crime"))
+  df <- df %>% separate(crimename3, c("crimeType", "Crime"))
   
   df$latitude <- as.numeric(df$latitude)
   df$longitude <- as.numeric(df$longitude)
@@ -36,11 +36,12 @@ cleanData <- function(jsondf){
 #' @return dataset containing limited rows with limit as \code{limit}
 #'
 #' @examples
-#' getLimitedData(limit = 5000)
+#' getLimitedData(limit = 500)
+#' 
+#' @importFrom jsonlite fromJSON
 #' 
 #' @export
 getLimitedData <- function(limit = 5000){
-  require(jsonlite)
   newUrl = paste0(baseUrl,"$limit=",limit)
   data <- fromJSON(newUrl)
   

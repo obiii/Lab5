@@ -17,6 +17,6 @@ dataset containing limited rows with limit as \code{limit}
 Get data limted by number of observations
 }
 \examples{
-getLimitedData(limit = 5000)
+getLimitedData(limit = 500)
 
 }
