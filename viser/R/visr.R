@@ -23,7 +23,7 @@ cleanData <- function(jsondf){
   
   df$time = format(as.POSIXct(strptime(df$date,"%Y-%m-%dT%H:%M:%S",tz="")) ,format = "%H:%M")
   df$date = format(as.POSIXct(strptime(df$date,"%Y-%m-%dT%H:%M:%S",tz="")) ,format = "%Y-%m-%d")
-  df <- df %>% tidyr::separate(crimename3, c("crimeType", "Crime"))
+  df <- separate(df,crimename3, c("crimeType", "Crime"))
   
   df$latitude <- as.numeric(df$latitude)
   df$longitude <- as.numeric(df$longitude)
