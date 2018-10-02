@@ -16,3 +16,7 @@ The package contains the following functionalities:
 
 * #### getCrimeByID(id):
     > Returns the crime type.
+
+
+* #### Vignettes(id):
+    > browseVignettes("viser")
