@@ -12,4 +12,6 @@ Depends: R (>= 2.10)
 LazyData: true
 Imports:
     jsonlite,tidyr,dplyr,curl, testthat
+Suggests: knitr, rmarkdown
+VignetteBuilder: knitr
 RoxygenNote: 6.1.0

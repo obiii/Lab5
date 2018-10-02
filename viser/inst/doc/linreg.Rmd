@@ -1,0 +1,61 @@
+---
+title: "Package viser"
+author: "Obaid Ur Rehman,Muhammad Habib"
+date: "October 2, 2018"
+output:
+  prettydoc::html_pretty:
+    theme: cayman
+    highlight: github
+  html_document:
+    toc: true
+    toc_depth: 2
+vignette: >
+  %\VignetteIndexEntry{viser}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+```{r iris, include=FALSE}
+library(viser)
+```
+
+## Introduction
+This package uses data.motogomery API to get and analayse crimme data for mmontgomery county.
+
+The package contains the following functionalities:
+
+* #### getLimitedData(limit = 500):
+  Fetches the crime data limited by variable limit as function argument.
+    + Example:
+        ``` {r data,message=FALSE, warning=FALSE}
+        data <- getLimitedData(limit = 500)
+        head(data)
+        ```
+* #### getDataByCrimeType(dataset, crimetype):
+  The print function displays coefficients along with their names
+    + Example:
+        ``` {r crimedata,message=FALSE, warning=FALSE}
+        data <- getDataByCrimeType(data, 2)
+        head(data)
+        ``` 
+* #### getCrimeByID(id):
+  Returns the crime type.
+      > Example:
+          ``` {r crimeid, echo=FALSE,message=FALSE, warning=FALSE}
+          crime <- getCrimeByID(2)
+          print(crime)
+          ```
+          
+* #### Note:
+
+  Unable to eradicate below warning:
+  
+    checking R code for possible problems ... NOTE
+    cleanData: no visible binding for global variable ‘crimename3’
+    Undefined global functions or variables:
+      crimename3
+      
+    Eventhough, crimename3 is a column in dataframe.
