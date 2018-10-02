@@ -18,5 +18,4 @@ Get data limted by number of observations
 }
 \examples{
 getLimitedData(limit = 500)
-
 }
