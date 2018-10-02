@@ -15,7 +15,6 @@ allCrime <- c("All","JUVENILE", "DAMAGE", "SUDDEN", "LARCENY", "BURGLARY", "SEX"
 #' Function to clean the data
 #' @param jsondf as input dataframe
 #' @importFrom tidyr separate
-#' @importFrom dplyr %>% group_by
 cleanData <- function(jsondf){
   df <- as.data.frame(jsondf)
   garbCols <- c(colnames(df)[1:4],"geolocation.type","geolocation.coordinates","incident_id","nibrs_code","police_district_number","pra","sector","start_date","state","zip_code","end_date")
