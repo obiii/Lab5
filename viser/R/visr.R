@@ -17,6 +17,7 @@ allCrime <- c("All","JUVENILE", "DAMAGE", "SUDDEN", "LARCENY", "BURGLARY", "SEX"
 #' @importFrom tidyr separate
 #' @importFrom dplyr %>%
 cleanData <- function(jsondf){
+  library(jsonlite)
   df <- as.data.frame(jsondf)
   garbCols <- c(colnames(df)[1:4],"geolocation.type","geolocation.coordinates","incident_id","nibrs_code","police_district_number","pra","sector","start_date","state","zip_code","end_date")
   df <- df[,colnames(df)%ni%garbCols]
@@ -40,6 +41,7 @@ cleanData <- function(jsondf){
 #' 
 #' @export
 getLimitedData <- function(limit = 5000){
+  library(jsonlite)
   newUrl = paste0(baseUrl,"$limit=",limit)
   data <- fromJSON(newUrl)
   
